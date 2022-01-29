@@ -1,4 +1,4 @@
 export const collections = [
-    "user",
-    "device"
+  "user",
+  "device"
 ]
