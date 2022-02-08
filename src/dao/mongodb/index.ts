@@ -1,8 +1,11 @@
 import makeAddDevice,{ AddDevice } from "./device/addDevice";
+import makeGetDeviceById, { GetDeviceById } from "./device/getDeviceById";
+
 import connect from "./create";
 
 export interface MongoDBApi {
-  addDevice: AddDevice
+  addDevice: AddDevice,
+  getDeviceById: GetDeviceById
 }
 
 export interface DBConfig {
@@ -27,6 +30,7 @@ export default ({
     DB_NAME: database,
   })
   return {
-    addDevice: makeAddDevice()
+    addDevice: makeAddDevice(),
+    getDeviceById: makeGetDeviceById()
   }
 }

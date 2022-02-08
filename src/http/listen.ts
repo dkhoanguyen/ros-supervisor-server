@@ -18,22 +18,14 @@ export default function listen(
   server: HTTPServer,
   {host, port}: ListenServerOptions,
 ): Promise<ServerAddress> {
-  if (server.listening) {
-    const address = server.address();
+  // if (server.listening) {
+  //   const address = server.address();
 
-    if (address.port !== port || address.address !== host) {
-      // We're listening, but not on the port and/or address that we wanted
-      const actual = `${address.address}:${address.port}`;
+  //   // We're listening on the Port and Host that we wanted, so this is fine.
+  //   return Promise.resolve(address);
+  // }
 
-      throw new HTTPServerAlreadyListening(
-        `HTTP Server was already listening on a different host/port. It is listening on ${actual} but you wanted ${host}:${port}`
-      );
-    }
-    // We're listening on the Port and Host that we wanted, so this is fine.
-    return Promise.resolve(address);
-  }
-
-
+  console.log("Heyy")
   let listenErrorHandler: (err: Error) => void;
 
   const listenError = new Promise<ServerAddress>((resolve, reject) => {

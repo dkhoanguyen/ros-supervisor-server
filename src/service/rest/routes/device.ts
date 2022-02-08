@@ -9,5 +9,6 @@ export function makeDeviceRoute(
 ): express.Router {
   const router = express.Router()
   router.post('/', handler.addDevice(dependencies.device))
+  router.get('/:id',handler.getDevice(dependencies.device))
   return router
 }
