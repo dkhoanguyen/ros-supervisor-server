@@ -1,2 +1,4 @@
 test.local.env
 node_modules
+build
+bin

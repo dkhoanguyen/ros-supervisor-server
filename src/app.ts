@@ -12,8 +12,8 @@ export async function start(
 ): Promise<void> {
   // const config = getConfigFromEnvironment(process.env)
   const config = {
-    DB_HOST: host,
-    DB_PORT: 27017,
+    DB_HOST: '10.10.12.2',
+    DB_PORT: 27016,
     DB_NAME: "Device",
     DB_USER: "admin",
     DB_PASSWORD: "admin"

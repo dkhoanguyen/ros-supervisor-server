@@ -1,16 +1,38 @@
 version: "3.1"
 services:
-  mongodb:
+  db:
     image: mongo
-    container_name: mongodb
     environment:
       - PUID=1000
       - PGID=1000
     volumes:
       - database:/data/db
     ports:
-      - 27017:27017
+      - 27016:27016
     restart: unless-stopped
+    networks:
+      server:
+        ipv4_address: 10.10.12.2
+  
+  api:
+    build:
+      context: .
+      dockerfile: dockerfiles/Dockerfile.dev
+    privileged: true
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      server:
+        ipv4_address: 10.10.12.3
 
 volumes:
   database:
+
+networks:
+  server:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.12.0/16
+          gateway: 10.10.12.1
