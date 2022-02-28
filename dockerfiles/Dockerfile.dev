@@ -1,0 +1,12 @@
+FROM node:16
+
+RUN mkdir /ros-supervisor-server
+COPY . /ros-supervisor-server/
+
+WORKDIR /ros-supervisor-server/
+
+RUN npm install && npm run build
+
+EXPOSE 3000
+
+CMD ["node","build/app.js"]
